@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "types": ["node", "koa", "koa-router"],
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "lib": ["es2018"],
+        "outDir": "dist",
+        "strict": false,
+        "typeRoots": [
+            "node_modules/koa-router",
+            "node_modules/@types",
+            "node_modules/koa-body"
+        ]
+    },
+    "include": ["./src/**/*.ts", "./src/**/*.hbs"]
+}

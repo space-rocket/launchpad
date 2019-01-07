@@ -1,0 +1,71 @@
+{
+  "name": "space-rocket-launchpad-backend",
+  "version": "1.0.0",
+  "description": "Space-Rocket LaunchPad Backend API",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc-watch",
+    "watch": "concurrently \"npm run env\" \"npm run watch-ts\" \"npm run watch-node\" -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\"",
+    "postinstall": "tsc -p ./",
+    "env": "node --require 'dotenv/config' --require 'babel-register'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbassroller/launchpad.git"
+  },
+  "keywords": [
+    "node.js",
+    "javascript",
+    "koa.js",
+    "react.js",
+    "jwt",
+    "authentication",
+    "docker"
+  ],
+  "author": "Michael Chavez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigbassroller/launchpad/issues"
+  },
+  "homepage": "https://github.com/bigbassroller/launchpad#readme",
+  "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "babel-register": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.0.0",
+    "dotenv": "^6.2.0",
+    "handlebars": "^4.0.12",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-jwt": "^3.5.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.0",
+    "koa-views": "^6.1.4",
+    "mongoose": "^5.3.13",
+    "next": "^7.0.2",
+    "nodemailer": "^4.7.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.47",
+    "@types/koa-router": "^7.0.35",
+    "@types/koa-views": "^2.0.3",
+    "@types/mongoose": "^5.3.5",
+    "@types/next": "^7.0.6",
+    "@types/node": "^10.12.10",
+    "concurrently": "^4.1.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.6",
+    "ts-node": "^7.0.1",
+    "tsc-watch": "^1.0.30",
+    "tslint": "^5.12.0",
+    "typescript": "^3.1.6",
+    "typescript-eslint-parser": "^21.0.1"
+  }
+}

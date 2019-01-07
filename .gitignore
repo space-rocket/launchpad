@@ -1,0 +1,5 @@
+mongo-db/
+node_modules/
+api/.env
+api/dist/
+frontend/.env

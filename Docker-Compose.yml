@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+ mongo-db:
+  container_name: mongo-db
+  image: mongo
+  ports:
+   - 27017
+  environment:
+   PORT: 27017
+ api:
+  container_name: api
+  build:
+    context: ./api
+    dockerfile: Dockerfile-local
+  ports:
+    - "4000:4000"
+  volumes:
+    - ./api:/usr/src/app/
+  links:
+    - mongo-db
+  environment:
+   NODE_ENV: 'localhost'
+   MONGO_URL: mongodb://mongo-db:27017
+   PORT: 4000
