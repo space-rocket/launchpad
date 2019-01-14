@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router';
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/Layout'
 import { confirmJWT } from '../lib/confirmJWT'
 
 class ConfirmAccount extends React.Component<any> {

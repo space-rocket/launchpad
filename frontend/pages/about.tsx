@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Layout from '../components/Layout';
+import Layout from '../components/layouts/Layout';
 
 export default () => (
   <Layout title="About | Next.js + TypeScript Example">

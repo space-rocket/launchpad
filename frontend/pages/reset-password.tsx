@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router';
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/Layout'
 import ResetForm from '../components/forms/ResetForm';
 import { checkJWT } from '../lib/checkJWT'
 

@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/Layout'
 import SignInForm from '../components/forms/SignInForm';
 
 export default () =>
