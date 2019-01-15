@@ -1,5 +1,6 @@
 import cookies from 'next-cookies'
 import { auth } from '../lib/auth'
+// import LayoutDoc from '../components/layouts/LayoutDoc';
 
 import Document, { Head, Main, NextScript } from 'next/document'
 
@@ -11,7 +12,6 @@ export default class MyDocument extends Document {
     if (token !== undefined) {
       console.log('we have token')
       const isLoggedIn = await auth(token)
-      console.log('isLoggedIn :', isLoggedIn)
       return { ...initialProps, isLoggedIn }
     } else {
       console.log('we dont have token')
@@ -19,14 +19,15 @@ export default class MyDocument extends Document {
     }
     
   }
-  
 
   render() {
+
     return (
       <html>
         <Head>
         </Head>
         <body>
+          {/* <LayoutDoc {...this.props}/> */}
           <Main />
           <NextScript />
         </body>

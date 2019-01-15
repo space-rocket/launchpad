@@ -5,10 +5,12 @@ import "../../styles/style.scss"
 import LoggedInNav from '../Nav/LoggedInNav';
 
 type Props = {
-  title?: string
+  title?: string,
+  isLoggedIn?: any
 }
 console.log('LoggedIn component called')
-const LoggedIn: React.SFC<Props> = ({ children, title = 'This is the default title' }) => (
+
+const LoggedIn: React.SFC<Props> = ({ isLoggedIn, children, title = 'This is the default title' }) => (
   <div>
     <Head>
       <title>{title}</title>

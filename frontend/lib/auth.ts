@@ -8,7 +8,7 @@ export function auth(token) {
     const t = d.getTime();
     // console.log("decoded.exp 🐱:", decoded.exp)
     console.log(" Math.round(t / seconds):🐱", Math.round(t / seconds))
-
+     
     if (decoded.exp < Math.round(t / seconds)) {
         // console.log("token expired 🐱:")
         return false

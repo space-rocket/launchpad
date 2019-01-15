@@ -9,6 +9,7 @@ class dashboard extends React.Component {
   // @ TODO: Make this into hoc? 
   // see _hoc-sheet-page.tsx.
   static async getInitialProps(ctx) {
+    console.log('get intial props called from dashboard')
     const { token } = cookies(ctx)
     if (token !== undefined ) {
       const isLoggedIn = await auth(token)
@@ -22,19 +23,14 @@ class dashboard extends React.Component {
     }
   
   }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.dashboard !== prevProps.dashboard) {
-
-    }
-  }
+  
 
   render() {
-    const { router } = this.props
+    const {router} = this.props
     const isLoggedIn = this.props.isLoggedIn
     if (isLoggedIn) {
       return (
-        <LoggedIn title="Home | Next.js + TypeScript Example">
+        <LoggedIn title="Home | Next.js + TypeScript Example" {...isLoggedIn}>
           <h1 className="title">Dashboard 👋</h1>
           <p><Link href='/about'><a>About</a></Link></p>
           <p>Custom environment variables process.env.NODE_ENV is "{process.env.NODE_ENV}"</p>
@@ -43,7 +39,6 @@ class dashboard extends React.Component {
         </LoggedIn>
       )
     } else {
-      router.push('/sign-in')
       return (
         <div>
         </div>
