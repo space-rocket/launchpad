@@ -4,6 +4,7 @@ import cookies from 'next-cookies'
 import { withRouter } from 'next/router';
 import { auth } from '../lib/auth'
 import LoggedIn from '../components/layouts/LoggedIn';
+import LayoutDoc from '../components/layouts/LayoutDoc';
 
 class dashboard extends React.Component {
   // @ TODO: Make this into hoc? 
@@ -31,6 +32,7 @@ class dashboard extends React.Component {
     if (isLoggedIn) {
       return (
         <LoggedIn title="Home | Next.js + TypeScript Example" {...isLoggedIn}>
+          <LayoutDoc {...this.props} />
           <h1 className="title">Dashboard 👋</h1>
           <p><Link href='/about'><a>About</a></Link></p>
           <p>Custom environment variables process.env.NODE_ENV is "{process.env.NODE_ENV}"</p>
