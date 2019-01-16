@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link';
 import cookies from 'next-cookies'
-import { withRouter } from 'next/router';
+import Router from 'next/router';
 import { auth } from '../lib/auth'
-import LoggedIn from '../components/layouts/LoggedIn';
+import Layout from '../components/layouts/Layout';
+import Header from '../components/Header';
 import LayoutDoc from '../components/layouts/LayoutDoc';
 
 class dashboard extends React.Component {
@@ -18,9 +19,7 @@ class dashboard extends React.Component {
       console.log('cookies(ctx) :', cookies(ctx))
       return { isLoggedIn }
     } else {
-      console.log('we dont have cookies(ctx)');
-      console.log('cookies(ctx) :', cookies(ctx))
-      return {}
+      return {  }
     }
   
   }
@@ -31,14 +30,15 @@ class dashboard extends React.Component {
     const isLoggedIn = this.props.isLoggedIn
     if (isLoggedIn) {
       return (
-        <LoggedIn title="Home | Next.js + TypeScript Example" {...isLoggedIn}>
-          <LayoutDoc {...this.props} />
+        <Layout title="Home | Next.js + TypeScript Example" {...isLoggedIn}>
+          {/* <LayoutDoc {...this.props} /> */}
+          <Header {...this.props} />
           <h1 className="title">Dashboard 👋</h1>
           <p><Link href='/about'><a>About</a></Link></p>
           <p>Custom environment variables process.env.NODE_ENV is "{process.env.NODE_ENV}"</p>
           <p>Custom environment variables process.env.ENV is "{process.env.ENV}"</p>
           <p>Custom environment variables process.env.API_URL is "{process.env.API_URL}"</p>
-        </LoggedIn>
+        </Layout>
       )
     } else {
       return (
@@ -50,4 +50,4 @@ class dashboard extends React.Component {
   }
 }
 
-export default withRouter(dashboard)
+export default dashboard

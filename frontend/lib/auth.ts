@@ -6,7 +6,7 @@ export function auth(token) {
     const seconds = 1000;
     const d = new Date();
     const t = d.getTime();
-    // console.log("decoded.exp 🐱:", decoded.exp)
+    console.log("decoded 🐱:", decoded)
     console.log(" Math.round(t / seconds):🐱", Math.round(t / seconds))
      
     if (decoded.exp < Math.round(t / seconds)) {
@@ -14,7 +14,7 @@ export function auth(token) {
         return false
     } else {
         // console.log("token not expired 🐱:")
-        return token
+        return decoded
     }
 
 }

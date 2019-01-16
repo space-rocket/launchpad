@@ -51,13 +51,11 @@ class SignInForm extends React.Component<{}, SignInFormState> {
       return json.then(Promise.reject.bind(Promise))
     }).then((response) => {
       const cookies = new Cookies()
-      // set the cookie
-      // https://www.npmjs.com/package/universal-cookie
       cookies.set('token', response.token, { path: '/' });
       Router.push('/dashboard')
       this.setState({
         message: response.message,
-        alert: response.alert
+        alert: response.alert,
       });
     }).catch(error => {
       this.setState({
