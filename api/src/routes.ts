@@ -7,9 +7,9 @@ import jwt from './middlewares/jwt';
 const router = new Router();
 
 router
-  .get('/api/users/', UsersControllers.find)
-  .get('/api/users/:id', UsersControllers.findById)
-  .post('/api/users/', UsersControllers.register)
+  .get('/api/users/', jwt, UsersControllers.find)
+  .get('/api/users/:id', jwt, UsersControllers.findById)
+  .post('/api/users/',  UsersControllers.register)
   .put('/api/users/:id', jwt, UsersControllers.update)
   .delete('/api/users/:id', jwt, UsersControllers.delete)
   // Authentication Routes
