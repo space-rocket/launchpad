@@ -7,7 +7,6 @@ import { AuthContext, themes, user } from '../auth/AuthContext';
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    console.log('this 😍:', this);
     this.state = {
       theme: themes.light,
       toggleTheme: this.toggleTheme,
@@ -16,9 +15,6 @@ export default class extends React.Component {
   }
 
   render() {
-    console.log('from nav index this.state: ', this.state)
-    console.log('from nav index this 😍:', this);
-
 
     if (this.props.isLoggedIn !== undefined) {
       return (

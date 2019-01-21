@@ -10,7 +10,8 @@ export default class extends React.Component {
   static async getInitialProps(ctx) {
     console.log('get intial props called from dashboard')
     const { token } = cookies(ctx)
-    if (token !== undefined) {
+    if (typeof token !== "undefined" && typeof token !== "string") {
+      console.log('token is defined')
       const isLoggedIn = await auth(token)
       console.log('we have cookies(ctx)')
       console.log('cookies(ctx) :', cookies(ctx))
@@ -18,6 +19,7 @@ export default class extends React.Component {
     } else {
       return {}
     }
+  
 
   }
 

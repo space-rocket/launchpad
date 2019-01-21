@@ -4,7 +4,6 @@ import Link from './Link'
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    console.log('this from LeftNav 😍:', this);
   }
 
   render() {

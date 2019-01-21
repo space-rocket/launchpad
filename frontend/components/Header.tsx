@@ -9,7 +9,6 @@ type Props = {
 export default class extends React.Component<Props> {
 
   render() {
-    console.log('this.props.isLoggedIn', this.props.isLoggedIn)
     return (
       <header>
         <nav>

@@ -1,11 +1,9 @@
 import React from 'react'
 import Link from './Link'
-import { ProgressPlugin } from 'webpack';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    console.log('this from LeftNav 😍:', this);
   }
 
   render() {
