@@ -7,8 +7,8 @@ import jwt from './middlewares/jwt';
 const router = new Router();
 
 router
-  .get('/api/users/', jwt, UsersControllers.find)
-  .get('/api/users/:id', jwt, UsersControllers.findById)
+  .get('/api/users/', UsersControllers.find)
+  .get('/api/users/:id', UsersControllers.findById)
   .post('/api/users/',  UsersControllers.register)
   .put('/api/users/:id', jwt, UsersControllers.update)
   .delete('/api/users/:id', jwt, UsersControllers.delete)
@@ -20,7 +20,7 @@ router
   .post('/api/forgot-password/', PasswordsControllers.forgot)
   .get('/api/reset-password/', jwt, PasswordsControllers.reset)
   .post('/api/update-password/', jwt, PasswordsControllers.update)
-  .get('/api/confirm-account/', jwt, PasswordsControllers.confirm)
+  .get('/api/confirm-account/', PasswordsControllers.confirm)
 
   .get('/', (ctx) => {
 	  return ctx.render('home', { name: 'world' });

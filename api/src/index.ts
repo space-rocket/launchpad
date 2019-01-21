@@ -8,13 +8,13 @@ import * as logger from 'koa-logger';
 import * as views from 'koa-views';
 import { connect } from 'mongoose';
 import router from './routes';
-
+console.log('config 😬 :', config);
 const url  = config.get('mongoUrl');
 const port = config.get('port');
 const frontendUrl = config.get('frontendUrl');
 
-console.log('config 😬 :', config);
 console.log('process.env.NODE_ENV 😬 :', process.env.NODE_ENV);
+console.log('process.env.LOCALHOST_FRONTEND_URL 😬 :', process.env.LOCALHOST_FRONTEND_URL);
 
 const options = {
 
