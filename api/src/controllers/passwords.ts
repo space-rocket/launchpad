@@ -28,7 +28,7 @@ class PasswordsControllers {
 			const transporter = nodemailer.createTransport({
 				auth: {
 					pass: process.env.GOOGLEPW,
-					user: process.env.GOOGLEMAIL,
+					user: process.env.GOOGLEEMAIL,
 				},
 				host: 'smtp.gmail.com',
 				port: 465,
@@ -37,7 +37,7 @@ class PasswordsControllers {
 
 			// setup email data with unicode symbols
 			const mailOptions = {
-				from: '"' + process.env.GOOGLEUSER + '" <' + process.env.GOOGLEMAIL + '>', // sender address
+				from: '"' + process.env.GOOGLEUSER + '" <' + process.env.GOOGLEEMAIL + '>', // sender address
 				to: email, // list of receivers
 				// tslint:disable-next-line:object-literal-sort-keys
 				subject: 'Password Reset ✔', // Subject line
@@ -131,7 +131,7 @@ class PasswordsControllers {
 					const transporter = nodemailer.createTransport({
 						auth: {
 							pass: process.env.GOOGLEPW,
-							user: process.env.GOOGLEMAIL,
+							user: process.env.GOOGLEEMAIL,
 						},
 						host: 'smtp.gmail.com',
 						port: 465,
@@ -140,7 +140,7 @@ class PasswordsControllers {
 
 					// setup email data with unicode symbols
 					const mailOptions = {
-						from: '"' + process.env.GOOGLEUSER + '" <' + process.env.GOOGLEMAIL + '>',
+						from: '"' + process.env.GOOGLEUSER + '" <' + process.env.GOOGLEEMAIL + '>',
 						subject: 'Your password has been changed ✔',
 						to: user.email,
 						// tslint:disable-next-line:object-literal-sort-keys
@@ -183,60 +183,57 @@ class PasswordsControllers {
 	 * Confirm
 	 * @param {ctx} Koa Context
 	 */
-	public async confirm(ctx) {
-		const decoded = await decoder(ctx);
-		console.log('decoded 😍', decoded);
+	public async confirm(ctx, next) {
+		const authorization = ctx.headers.authorization;
+		const token = authorization.replace('Bearer ', '');
+		const decoded = await jwt.verify(token, jwtKey);
 		const userid = decoded.userid;
-		console.log('userid 😍', userid);
-		// @TODO: Also check expiration date
 		try {
 			const data = await User.findById(userid, (err, user: any) => {
-			if (err) { return false; }
-			console.log('data 😍', data);
-			console.log('user 😍', user);
-			if (user) {
-				user.isVerified = true;
-				console.log('user2 😍', user);
-				// tslint:disable-next-line:no-shadowed-variable
-				user.save((err: any) => {
-					if (err) {
-						return;
-					}
+				if (err) {
+					console.log('I don\'t like it right thur 👊', err);
+					ctx.body = {
+						alert: 'warning',
+						message: ctx.response.status,
+						success: true,
+					};
+				} else if (user) {
+					console.log('Hey there user :', user);
+					user.isVerified = true;
+					ctx.status = 200;
 					ctx.body = {
 						alert: 'success',
-						message: `Thank you. You're account is now verified. You can now login`,
+						message: 'User confirmed, you can now login',
 						success: true,
-						user,
 					};
-				});
-			} else {
-				console.log('no user found 😱');
+					// @ TODO: Make async and have ctx.body inside callback
+					// tslint:disable-next-line:no-shadowed-variable
+					user.save((err: any) => {
+						if (err) {
+							return;
+						}
+					});
+				} else {
+					console.log('No error or user');
+					ctx.status = 200;
+					ctx.body = {
+						alert: 'warning',
+						message: `${ctx.response.status} No user found 😫`,
+						success: true,
+					};
+				}
+			});
+		} catch (error) {
+			if (error.name === 'CastError' || error.name === 'NotFoundError') {
+				console.log('error 😫', error);
+				ctx.throw(404);
 			}
-		});
-			if (!data) {
-				// ctx.throw(404);
-				ctx.body = {
-					alert: 'fail',
-					message: `Nope`,
-					success: false,
-
-				};
-			}
-		} catch (err) {
-			if (err.name === 'CastError' || err.name === 'NotFoundError') {
-				// ctx.throw(404);
-				ctx.body = {
-					alert: 'fail',
-					message: `Nope`,
-					success: false,
-				};
-			}
-			// ctx.throw(500);
-			ctx.body = {
-				alert: 'fail',
-				message: `Nope`,
-				success: false,
-			};
+			ctx.throw(500);
+		}
+		if (ctx.response.status === 404) {
+			console.log('👊:👊:👊:404!!!');
+		} else if (ctx.response.status === 200) {
+			console.log('👊:👊:👊: status 200');
 		}
 	}
 }
