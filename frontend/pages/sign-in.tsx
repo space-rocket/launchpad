@@ -18,9 +18,12 @@ import SignInForm from '../components/forms/SignInForm';
 
 export default class extends React.Component {
   static async getInitialProps(ctx) {
-    console.log('get intial props called from dashboard')
+    console.log('get intial props called from sign-in')
     const { token } = cookies(ctx)
-    if (token !== undefined) {
+    console.log('token  😚', token)
+    console.log('typeof token', typeof token)
+    if (typeof token !== "undefined" && typeof token !== "string") {
+      console.log('typeof token', typeof token)
       const isLoggedIn = await auth(token)
       console.log('we have cookies(ctx)')
       console.log('cookies(ctx) :', cookies(ctx))
@@ -33,7 +36,6 @@ export default class extends React.Component {
   }
 
   render() {
-    console.log('this.props: ', this.props)
     return (
       <Layout title='Sign In'>
         <Header {...this.props}/>

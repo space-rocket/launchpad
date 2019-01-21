@@ -8,9 +8,9 @@ import Header from '../components/Header';
 
 export default class extends React.Component {
   static async getInitialProps(ctx) {
-    console.log('get intial props called from dashboard')
+    console.log('get intial props called from index')
     const { token } = cookies(ctx)
-    if (token !== undefined) {
+    if (typeof token !== "undefined") {
       const isLoggedIn = await auth(token)
       console.log('we have cookies(ctx)')
       console.log('cookies(ctx) :', cookies(ctx))
@@ -27,6 +27,7 @@ export default class extends React.Component {
       <Layout title="Home | Next.js + TypeScript Example">
         <Header {...this.props} />
         <h1 className="title">Hello Next.js yo!👋</h1>
+
       </Layout>
     )
   }

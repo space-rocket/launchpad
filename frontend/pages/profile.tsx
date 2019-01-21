@@ -8,9 +8,9 @@ import Header from '../components/Header';
 
 export default class extends React.Component {
   static async getInitialProps(ctx) {
-    console.log('get intial props called from dashboard')
+    console.log('get intial props called from profile')
     const { token } = cookies(ctx)
-    if (token !== undefined) {
+    if (typeof token !== "undefined") {
       const isLoggedIn = await auth(token)
       console.log('we have cookies(ctx)')
       console.log('cookies(ctx) :', cookies(ctx))
