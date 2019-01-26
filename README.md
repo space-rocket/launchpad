@@ -4,7 +4,7 @@
 - User sign-up page
 - User login pages including confirmation forgot and reset password email
 ## Technology
-Next.js for server side rendering using React on frontend and Koa (instead of Express), MongoDB with Mongoose for data storage, sass for styling CSS and Nodemailer for sending emails.
+Next.js for server side rendering using React on frontend and Koa (instead of Express), MongoDB with Mongoose for data storage, Sass for styling CSS and Nodemailer for sending emails.
 
 ## Getting Started
 There are several ways to run locally. The preferred way is with Docker running on your local machine. If you don't have Docker installed, don't worry, you can still run it with just Node.js and MongoDB installed.
