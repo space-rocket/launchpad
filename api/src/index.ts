@@ -13,6 +13,7 @@ const url  = config.get('mongoUrl');
 const port = config.get('port');
 const frontendUrl = config.get('frontendUrl');
 
+console.log('mongo url 😬 :', url);
 console.log('process.env.NODE_ENV 😬 :', process.env.NODE_ENV);
 console.log('process.env.LOCALHOST_FRONTEND_URL 😬 :', process.env.LOCALHOST_FRONTEND_URL);
 
