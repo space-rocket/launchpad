@@ -10,10 +10,10 @@ export default class extends React.Component<Props> {
 
   render() {
     return (
-      <header>
-        <nav>
+      <header className="site-header">
+        <div className="container">
           <Nav {...this.props} />
-        </nav>
+        </div>
       </header>
     )
   }
