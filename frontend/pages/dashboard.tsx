@@ -7,7 +7,12 @@ import Layout from '../components/layouts/Layout';
 import Header from '../components/Header';
 import LayoutDoc from '../components/layouts/LayoutDoc';
 
-class dashboard extends React.Component {
+
+interface Props {
+  isLoggedIn: { username: string; }
+}
+
+class dashboard extends React.Component<Props> {
   // @ TODO: Make this into hoc? 
   // see _hoc-sheet-page.tsx.
   static async getInitialProps(ctx) {
@@ -26,18 +31,18 @@ class dashboard extends React.Component {
   
 
   render() {
-    const {router} = this.props
     const isLoggedIn = this.props.isLoggedIn
     if (isLoggedIn) {
       return (
         <Layout title="Home | Next.js + TypeScript Example" {...isLoggedIn}>
-          {/* <LayoutDoc {...this.props} /> */}
           <Header {...this.props} />
-          <h1 className="title">Dashboard 👋</h1>
-          <p><Link href='/about'><a>About</a></Link></p>
-          <p>Custom environment variables process.env.NODE_ENV is "{process.env.NODE_ENV}"</p>
-          <p>Custom environment variables process.env.ENV is "{process.env.ENV}"</p>
-          <p>Custom environment variables process.env.API_URL is "{process.env.API_URL}"</p>
+          <div className="container">
+            <h1 className="title">Dashboard 👋</h1>
+            <p><Link href='/about'><a>About</a></Link></p>
+            <p>Custom environment variables process.env.NODE_ENV is "{process.env.NODE_ENV}"</p>
+            <p>Custom environment variables process.env.ENV is "{process.env.ENV}"</p>
+            <p>Custom environment variables process.env.API_URL is "{process.env.API_URL}"</p>
+          </div>
         </Layout>
       )
     } else {

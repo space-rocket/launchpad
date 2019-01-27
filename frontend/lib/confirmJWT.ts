@@ -1,13 +1,22 @@
 import fetch from 'isomorphic-fetch';
 
-export function confirmJWT(token) {
+export async function confirmJWT(token) {
   console.log('token 🐱💥', token)
   const backend_url = process.env.API_URL + '/api/confirm-account';
 
-  return fetch(`${backend_url}`, {
+  let response = await fetch(`${backend_url}`, {
     headers: {
       'content-type': 'application/json',
       'Authorization': 'Bearer ' + token,
     }
-  })
+  });
+  let data = await response.json();
+  return data;
+
+  // return fetch(`${backend_url}`, {
+  //   headers: {
+  //     'content-type': 'application/json',
+  //     'Authorization': 'Bearer ' + token,
+  //   }
+  // })
 }

@@ -1,7 +1,11 @@
 import React from 'react'
 import Link from './Link'
 
-export default class extends React.Component {
+interface Props {
+  isLoggedIn: { username: string; }
+}
+
+export default class extends React.Component<Props> {
   constructor(props) {
     super(props);
   }
