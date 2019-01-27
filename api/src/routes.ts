@@ -1,5 +1,5 @@
 import * as Router from 'koa-router';
-import PasswordsControllers from './controllers/passwords';
+import PasswordsControllers from './controllers/auth';
 import UsersControllers from './controllers/users';
 import Authenticate from './middlewares/authenticate';
 import jwt from './middlewares/jwt';
