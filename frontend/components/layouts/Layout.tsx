@@ -14,8 +14,10 @@ const Layout: React.SFC<Props> = ({ children, title = 'This is the default title
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <script async defer src="https://buttons.github.io/buttons.js"></script>
     </Head>
-    {children}
-    <footer>
+    <main className="mb-5">
+      {children}
+    </main>
+    <footer className="text-center">
       Thanks for checking out {process.env.PROJECT_NAME}!
     </footer>
   </div>
