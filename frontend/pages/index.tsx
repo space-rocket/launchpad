@@ -18,16 +18,16 @@ export default class extends React.Component {
     } else {
       return {}
     }
-
   }
 
   render() {
     console.log('this.props: ', this.props)
     return (
       <Layout title="Home | Next.js + TypeScript Example">
-        <Header {...this.props} />
-        <h1 className="title">Hello Next.js yo!👋</h1>
-
+        <Header {...this.props}/>
+        <div className="container">
+          <h1 className="title">Hello Next.js yo!👋</h1>
+        </div>
       </Layout>
     )
   }
