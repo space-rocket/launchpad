@@ -26,7 +26,9 @@ export default class extends React.Component {
     return (
       <Layout title="Profile | Next.js + TypeScript Example">
         <Header {...this.props} />
-        <h1 className="title">Profile page coming soon!👋</h1>
+        <div className="container">
+          <h1 className="title">Profile page coming soon!👋</h1>        
+        </div>
       </Layout>
     )
   }
